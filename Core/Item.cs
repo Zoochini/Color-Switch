@@ -13,14 +13,6 @@ namespace Color_Switch.Core
         { 
         }
 
-        public void ReinitialisationRectangleDestination()
-        {
-            rectangleDestination.X = 0;
-            rectangleDestination.Y = 0;
-            rectangleDestination.Width = 0;
-            rectangleDestination.Height = 0;
-        }
-
         
     }
 }

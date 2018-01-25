@@ -25,17 +25,17 @@ namespace Color_Switch.Core
 
         public Sprites spriteIndex;
 
-        private bool hasCollided;
-        public bool HasCollided
+        private bool hasCollidedItem;
+        public bool HasCollidedItem
         {
-            get { return hasCollided; }
+            get { return hasCollidedItem; }
         }
 
 
         public Ball(int frameWidth, int frameHeight) : base(frameWidth, frameHeight)
         {
             spriteIndex = Sprites.Yellow;
-            hasCollided = false;
+            hasCollidedItem = false;
             rectangleSource = new Rectangle(0, 0, frameWidth, frameHeight);
         }
 
@@ -65,7 +65,7 @@ namespace Color_Switch.Core
                 }
                 rectangleSource.X = (int)spriteIndex * frameWidth;
                 item.ReinitialisationRectangleDestination();
-                hasCollided = true;
+                hasCollidedItem = true;
 
             }
         }

@@ -14,7 +14,6 @@ namespace Color_Switch.Core
         public Texture2D textureObject;
         protected Rectangle rectangleSource;
         protected Rectangle rectangleDestination;
-
         public Rectangle RectangleDestination
         {
             get { return rectangleDestination; }
@@ -23,8 +22,8 @@ namespace Color_Switch.Core
 
         
       
-        protected int frameWidth;       
-        protected int frameHeight;
+        public int frameWidth;       
+        public int frameHeight;
         
 
         public CSObject()
@@ -48,6 +47,14 @@ namespace Color_Switch.Core
             rectangleDestination.Y = (int)positionObject.Y;
         }
 
+        public void ReinitialisationRectangleDestination()
+        {
+            rectangleDestination.X = 0;
+            rectangleDestination.Y = 0;
+            rectangleDestination.Width = 0;
+            rectangleDestination.Height = 0;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(textureObject, rectangleDestination, Color.White);
@@ -56,6 +63,9 @@ namespace Color_Switch.Core
         public void DrawAnimation(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(textureObject, rectangleDestination, rectangleSource, Color.White);
+            //Vector2 screenCenter = new Vector2(ColorSwitch.screenWidth / 2, ColorSwitch.screenHeight / 2);
+           // Vector2 imageCenter = new Vector2(this.frameWidth / 2, frameHeight / 2);
+            //spriteBatch.Draw(textureObject, screenCenter, rectangleDestination, rectangleSource, imageCenter, 0f, null, Color.White, SpriteEffects.None, 0f);
         }
 
     }

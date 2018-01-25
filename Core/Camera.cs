@@ -10,14 +10,16 @@ namespace Color_Switch.Core
     public class Camera
     {
         public Matrix Translation;
-        public Matrix Scale;
+        public bool supHalfScreenHeight = false;
 
         public void Follow(Ball ball)
         {
-            Scale = Matrix.CreateScale(ColorSwitch.screenHeight);
-            if (ball.positionObject.Y <= ColorSwitch.screenHeight / 2 /*&& ball.velocity.Y < 0*/)
+            if (ball.velocity.Y < 0)
+            {
                 Translation = Matrix.CreateTranslation(-ball.positionObject.X - (ball.RectangleDestination.Width / 2), -ball.positionObject.Y - (ball.RectangleDestination.Height / 2), 0)
-                           * Matrix.CreateTranslation((ColorSwitch.screenWidth / 2)+13, (ColorSwitch.screenHeight / 2)+15, 0);
+                           * Matrix.CreateTranslation((ColorSwitch.screenWidth / 2), (ColorSwitch.screenHeight / 2), 0);
+                supHalfScreenHeight = true;
+            }
         }
     }
 }
