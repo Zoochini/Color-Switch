@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Bardiot Maxime/Documents/Visual Studio 2017/Projects/Color Switch/Color Switch/Content/ball.png</SourceFile>
-  <SourceTime>2018-01-20T17:53:16.1975725+01:00</SourceTime>
-  <DestFile>C:/Users/Bardiot Maxime/Documents/Visual Studio 2017/Projects/Color Switch/Color Switch/Content/bin/Windows/ball.xnb</DestFile>
-  <DestTime>2018-01-23T16:19:17.2221275+01:00</DestTime>
+  <SourceFile>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/ball.png</SourceFile>
+  <SourceTime>2018-01-23T17:26:50.6116621+01:00</SourceTime>
+  <DestFile>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/bin/Windows/ball.xnb</DestFile>
+  <DestTime>2018-01-25T18:32:17.5855539+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

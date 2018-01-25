@@ -19,6 +19,8 @@ namespace Color_Switch
         Camera camera;
         public static int screenWidth;
         public static int screenHeight;
+        public float hauteurMax;
+        private SpriteFont font;
 
         public ColorSwitch()
         {
@@ -28,6 +30,7 @@ namespace Color_Switch
             graphics.PreferredBackBufferHeight = 768;
             screenWidth = graphics.PreferredBackBufferWidth;
             screenHeight = graphics.PreferredBackBufferHeight;
+            hauteurMax = screenHeight/2;
 
 
         }
@@ -44,6 +47,7 @@ namespace Color_Switch
             ball = new Ball(26, 26);
             item = new Item(30, 30);
             obstacle = new Obstacle(300, 300);
+            score = new Score(33, 32);
             base.Initialize();
         }
 
@@ -58,15 +62,19 @@ namespace Color_Switch
 
             // TODO: use this.Content to load your game content here
             ball.textureObject = Content.Load<Texture2D>("ball");
-            ball.positionObject = new Vector2(512, 700);
+            ball.positionObject = new Vector2((screenWidth - ball.frameWidth) / 2, (((screenHeight - ball.frameHeight) / 2))+(screenHeight/4));
             ball.InitialisationRectangleDestination();
             item.textureObject = Content.Load<Texture2D>("multicolor");
-            item.positionObject = new Vector2(512, 300);
+            item.positionObject = new Vector2((screenWidth - ball.frameWidth) / 2, ((screenHeight - item.frameHeight) / 2)-(screenHeight/3));
             item.InitialisationRectangleDestination();
             obstacle.textureObject = Content.Load<Texture2D>("obstacle");
-            obstacle.positionObject = new Vector2(520, item.positionObject.Y-200);
+            obstacle.positionObject = new Vector2(screenWidth / 2, item.positionObject.Y-(screenHeight/4));
             obstacle.InitialisationRectangleDestination();
+            score.textureObject = Content.Load<Texture2D>("star");
+            score.positionObject = new Vector2(obstacle.positionObject.X-(ball.frameWidth)/2, obstacle.positionObject.Y-(ball.frameHeight)/2);
+            score.InitialisationRectangleDestination();
             camera = new Camera();
+            font = Content.Load<SpriteFont>("Score");
         }
 
         /// <summary>
@@ -90,9 +98,14 @@ namespace Color_Switch
 
             // TODO: Add your update logic here
             ball.UpdateColor(gameTime, item);
+            score.CollisionBall(ball);
             ball.Jump(gameTime);
             obstacle.Rotate();
-            camera.Follow(ball);
+            if (ball.positionObject.Y <= hauteurMax)
+            {
+                camera.Follow(ball);
+                hauteurMax = ball.positionObject.Y;
+            }
             base.Update(gameTime);
         }
 
@@ -105,14 +118,24 @@ namespace Color_Switch
             GraphicsDevice.Clear(Color.TransparentBlack);
 
             // TODO: Add your drawing code here
-            if (ball.positionObject.Y <= ColorSwitch.screenHeight / 2)
-                spriteBatch.Begin(transformMatrix: camera.Translation);
-            else
+            if (ball.positionObject.Y > ColorSwitch.screenHeight/2 && !camera.supHalfScreenHeight)
+            {
+
                 spriteBatch.Begin();
+                spriteBatch.DrawString(font, "" + score.ScoreCompteur, new Vector2(0, 0), Color.White);
+            }
+            else
+            {
+                spriteBatch.Begin(transformMatrix: camera.Translation);
+                spriteBatch.DrawString(font, "" + score.ScoreCompteur, new Vector2(0, ball.positionObject.Y - ((screenHeight - ball.frameHeight) / 2) - (ball.positionObject.Y - hauteurMax)), Color.White);
+            }
+                
             ball.DrawAnimation(spriteBatch);
             obstacle.Draw(spriteBatch);
-            if(!ball.HasCollided)
+            if(!ball.HasCollidedItem)
                 item.Draw(spriteBatch);
+            if (!score.HasCollidedScore)
+                score.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }

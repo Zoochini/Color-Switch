@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Bardiot Maxime/Documents/Visual Studio 2017/Projects/Color Switch/Color Switch/Content/ball.png</File>
-    <File>C:/Users/Bardiot Maxime/Documents/Visual Studio 2017/Projects/Color Switch/Color Switch/Content/multicolor.png</File>
-    <File>C:/Users/Bardiot Maxime/Documents/Visual Studio 2017/Projects/Color Switch/Color Switch/Content/obstacle.png</File>
+    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/ball.png</File>
+    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/multicolor.png</File>
+    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/obstacle.png</File>
   </SourceFiles>
 </SourceFileCollection>

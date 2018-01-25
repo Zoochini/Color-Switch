@@ -52,3 +52,7 @@ C:\Users\Bardiot Maxime\Documents\Visual Studio 2017\Projects\Color Switch\Color
 C:\Users\Bardiot Maxime\Documents\Visual Studio 2017\Projects\Color Switch\Color Switch\obj\x86\Debug\Color Switch.csproj.CoreCompileInputs.cache
 C:\Users\Bardiot Maxime\Documents\Visual Studio 2017\Projects\Color Switch\Color Switch\obj\x86\Debug\Color Switch.exe
 C:\Users\Bardiot Maxime\Documents\Visual Studio 2017\Projects\Color Switch\Color Switch\obj\x86\Debug\Color Switch.pdb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.csprojResolveAssemblyReference.cache
+C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.csproj.CoreCompileInputs.cache
+C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.exe
+C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.pdb
