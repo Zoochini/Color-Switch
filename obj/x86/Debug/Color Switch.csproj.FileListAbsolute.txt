@@ -56,3 +56,28 @@ C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.csprojRes
 C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.csproj.CoreCompileInputs.cache
 C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.exe
 C:\Users\Kyon\Documents\GitHub\Color-Switch\obj\x86\Debug\Color Switch.pdb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\ball.xnb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\multicolor.xnb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\obstacle.xnb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Color Switch.exe
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Color Switch.pdb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\Score.xnb
+C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\star.xnb
