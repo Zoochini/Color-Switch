@@ -10,42 +10,51 @@ namespace Color_Switch.Core
 {
     public class CSObject
     {
-        public Vector2 positionObject;
-        public Texture2D textureObject;
-        protected Rectangle rectangleSource;
-        protected Rectangle rectangleDestination;
-        public Rectangle RectangleDestination
-        {
-            get { return rectangleDestination; }
-        }
-        public Vector2 velocity;
+        protected Vector2 positionObject; //Position X et Y des objets
+        protected Texture2D textureObject; //Charger les sprites des objets
+        protected Rectangle rectangleSource; //Avoir les coordonnées un sprite dans un fichier en contenant plusieurs
+        protected Rectangle rectangleDestination; //Hitbox des objets
+        protected Vector2 velocity; //Vitesse de déplacement des objets
+        protected int width; //la largeur de l'objet
+        protected int height; //la hauteur de l'objet
 
-        
-      
-        public int frameWidth;       
-        public int frameHeight;
-        
+        public int Width { get => width; }
+        public int Height { get => height; }
+
+        public Rectangle RectangleDestination { get => rectangleDestination; }
+        public Vector2 PositionObject { get => positionObject; set => positionObject = value; }
+        public Texture2D TextureObject { get => textureObject; set => textureObject = value; }
+        public Vector2 Velocity { get => velocity; }
+
+
+
 
         public CSObject()
         {
         }
 
-        public CSObject(int frameWidth, int frameHeight)
+        public CSObject(int Width, int Height)
         {
-            this.frameWidth = frameWidth;
-            this.frameHeight = frameHeight;
+            this.width = Width;
+            this.height = Height;
 
         }
+
+        //pour initialiser la hitbox des objets
 
         public void InitialisationRectangleDestination()
         {
-            rectangleDestination = new Rectangle((int)positionObject.X, (int)positionObject.Y, frameWidth, frameHeight);
+            rectangleDestination = new Rectangle((int)PositionObject.X, (int)PositionObject.Y, width, height);
         }
+
+        //pour mettre à jour la hitbox des objets
 
         public void UpdateRectangleDestination(Vector2 positionObject)
         {
             rectangleDestination.Y = (int)positionObject.Y;
         }
+
+        //pour "faire disparaite" la hitbox d'un objet
 
         public void ReinitialisationRectangleDestination()
         {
@@ -55,17 +64,11 @@ namespace Color_Switch.Core
             rectangleDestination.Height = 0;
         }
 
+        //Affichage standard des objets
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(textureObject, rectangleDestination, Color.White);
-        }
-
-        public void DrawAnimation(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(textureObject, rectangleDestination, rectangleSource, Color.White);
-            //Vector2 screenCenter = new Vector2(ColorSwitch.screenWidth / 2, ColorSwitch.screenHeight / 2);
-           // Vector2 imageCenter = new Vector2(this.frameWidth / 2, frameHeight / 2);
-            //spriteBatch.Draw(textureObject, screenCenter, rectangleDestination, rectangleSource, imageCenter, 0f, null, Color.White, SpriteEffects.None, 0f);
+            spriteBatch.Draw(TextureObject, rectangleDestination, Color.White);
         }
 
     }

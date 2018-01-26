@@ -9,27 +9,25 @@ namespace Color_Switch.Core
     public class Score : CSObject
     {
 
-        private bool hasCollidedScore;
-        public bool HasCollidedScore
-        {
-            get { return hasCollidedScore; }
-        }
+        bool hasCollidedScore; //servira à faire disparaitre graphiquement la hitbox de l'item dans la méthode Draw de ColorSwitch.cs lorsque la balle l'aura touchée
+        int scoreCompteur; //Score total du joueur durant la partie
 
         public int ScoreCompteur { get => scoreCompteur; set => scoreCompteur = value; }
+        public bool HasCollidedScore { get => hasCollidedScore; set => hasCollidedScore = value; }
 
-        private int scoreCompteur;
-
-        public Score(int frameWidth, int frameHeight) : base(frameWidth, frameHeight)
+        public Score(int Width, int Height) : base(Width, Height)
         {
             ScoreCompteur = 0;
         }
+
+        //Gère la collision de l'objet avec la balle
 
         public void CollisionBall(Ball ball)
         {
             if (rectangleDestination.Intersects(ball.RectangleDestination))
             {
-                ReinitialisationRectangleDestination();
-                hasCollidedScore = true;
+                ReinitialisationRectangleDestination(); //on fait disparaitre physiquement la hitbox de le l'objet
+                hasCollidedScore = true; 
                 ScoreCompteur++;
             }
         }

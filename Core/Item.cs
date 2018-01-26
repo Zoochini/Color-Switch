@@ -9,7 +9,7 @@ namespace Color_Switch.Core
 {
     public class Item : CSObject
     {
-        public Item(int frameWidth, int frameHeight) : base(frameWidth, frameHeight)
+        public Item(int Width, int Height) : base(Width, Height)
         { 
         }
 
