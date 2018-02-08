@@ -81,3 +81,41 @@ C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.XInput
 C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
 C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\Score.xnb
 C:\Users\Kyon\Documents\GitHub\Color-Switch\bin\Windows\x86\Debug\Content\star.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\obstacle.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\ball.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\multicolor.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\obstacleCircle.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\obstacleLine.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\obstacleSquare.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\Score.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\star.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Color Switch.exe
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Color Switch.pdb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\MonoGame.Framework.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.XInput.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\MonoGame.Framework.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.XInput.xml
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+H:\Users\zabsonre\source\repos\Color-Switch\obj\x86\Debug\Color Switch.csprojResolveAssemblyReference.cache
+H:\Users\zabsonre\source\repos\Color-Switch\obj\x86\Debug\Color Switch.csproj.CoreCompileInputs.cache
+H:\Users\zabsonre\source\repos\Color-Switch\obj\x86\Debug\Color Switch.exe
+H:\Users\zabsonre\source\repos\Color-Switch\obj\x86\Debug\Color Switch.pdb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\bgColor.jpg
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\play.png
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\scores.png
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\bgColor.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\play.xnb
+H:\Users\zabsonre\source\repos\Color-Switch\bin\Windows\x86\Debug\Content\scores.xnb

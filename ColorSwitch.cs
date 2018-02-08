@@ -30,7 +30,16 @@ namespace Color_Switch
 
         public static int screenWidth;
         public static int screenHeight;
-
+        /*pour le menu */
+        const int menu = 0, play = 1, gameover = 2, scoree = 3;
+        int CurrentScreen = menu;
+        Texture2D scoresgame, playgame;
+        Button playButton, scoreButton;
+        float screenwidth, screenheight;
+        Texture2D bgimage;
+        MouseState mouseState, previousMouseState;
+        KeyboardState ks;
+        /*FIn pour le menu*/
         public ColorSwitch()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -41,7 +50,7 @@ namespace Color_Switch
             screenHeight = graphics.PreferredBackBufferHeight;
             hauteurMax = screenHeight/2;
             color = new Color(10,10,10);
-
+            this.IsMouseVisible = true;
 
         }
 
@@ -94,6 +103,21 @@ namespace Color_Switch
             score.InitialisationRectangleDestination();
 
             font = Content.Load<SpriteFont>("Score");
+
+            /*pour le menu*/
+            scoresgame = Content.Load<Texture2D>("scores");
+
+            playgame = Content.Load<Texture2D>("play");
+            bgimage = Content.Load<Texture2D>("bgColor");
+
+            scoreButton = new Button(new Rectangle(300, 300, scoresgame.Width, scoresgame.Height), true);
+            scoreButton.load(Content, "scores");
+
+
+            playButton = new Button(new Rectangle(300, 100, playgame.Width, playgame.Height), true);
+            playButton.load(Content, "play");
+
+            /*fin pour le menu*/
         }
 
         /// <summary>
@@ -152,7 +176,55 @@ namespace Color_Switch
                 hauteurMax = ball.PositionObject.Y;
             }
 
+            /*Pour le menu*/
+            //verifier l'état de la souris
+            mouseState = Mouse.GetState();
+            ks = Keyboard.GetState();
+            UpdateMenu();
+
+            /*fin pour le menu*/
             base.Update(gameTime);
+        }
+        void UpdateMenu()
+        {
+            switch (CurrentScreen)
+            {
+                case menu:
+                    //pour aller dans le jeux
+                    if (playButton.update(new Vector2(mouseState.X, mouseState.Y)) == true && mouseState != previousMouseState && mouseState.LeftButton == ButtonState.Pressed)
+                    {
+                        CurrentScreen = play;
+                    }
+
+                    //pour aller dans les scores
+                    if (scoreButton.update(new Vector2(mouseState.X, mouseState.Y)) == true && mouseState != previousMouseState && mouseState.LeftButton == ButtonState.Pressed)
+                    {
+                        CurrentScreen = scoree;
+                    }
+
+                    break;
+
+                case scoree:
+                    if (ks.IsKeyDown(Keys.A))
+                    {
+                        CurrentScreen = menu;
+                    }
+                    break;
+
+                case play:
+                    //What we want to happen when we play our GAME goes in here.
+                    if (ks.IsKeyDown(Keys.A))
+                    {
+                        CurrentScreen = menu;
+                    }
+                    break;
+
+                case gameover:
+                    //What we want to happen when our GAME is OVER goes in here.
+                    break;
+
+            }
+            previousMouseState = mouseState;
         }
 
         //pour gérer la création d'un nouvel obstacle
@@ -220,15 +292,37 @@ namespace Color_Switch
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(color);
-
+            //DrawGamePlay(gameTime);
             // TODO: Add your drawing code here
-
+            //pour le menu
+            spriteBatch.Begin();
+            switch (CurrentScreen)
+            {
+                case menu:
+                    spriteBatch.Draw(bgimage, new Rectangle(0, 0, bgimage.Width, bgimage.Height), Color.White);
+                    spriteBatch.Draw(playgame, new Rectangle(300, 100, playgame.Width, playgame.Height), Color.White);
+                    spriteBatch.Draw(scoresgame, new Rectangle(300, 200, scoresgame.Width, scoresgame.Height), Color.White);
+                    break;
+                case scoree:
+                    spriteBatch.Draw(scoresgame, new Rectangle(300, 300, scoresgame.Width, scoresgame.Height), Color.White);
+                    break;
+                case play:
+                    DrawGamePlay(gameTime);
+                    break;
+            }
             //Gère le cas où la balle n'a pas encore atteint le centre de l'écran
 
-            if (ball.PositionObject.Y > screenHeight/2 && !camera.SupHalfScreenHeight)
+            spriteBatch.End();
+            base.Draw(gameTime);
+        }
+        void DrawGamePlay(GameTime gameTime)
+        {
+            /* ajout de cette fonction  le 08/02/2018 a 15h05
+             les elements de cette fonction provienne de la fonction DRAW */
+            if (ball.PositionObject.Y > screenHeight / 2 && !camera.SupHalfScreenHeight)
             {
 
-                spriteBatch.Begin();
+                //spriteBatch.Begin();
                 spriteBatch.DrawString(font, "" + score.ScoreCompteur, new Vector2(0, 0), Color.White);
             }
 
@@ -240,7 +334,7 @@ namespace Color_Switch
 
                 spriteBatch.DrawString(font, "" + score.ScoreCompteur, new Vector2(0, ball.PositionObject.Y - ((screenHeight - ball.Height) / 2) - (ball.PositionObject.Y - hauteurMax)), Color.White);
             }
-            
+
             ball.DrawAnimation(spriteBatch);
 
             //Deux affichages différents pour les obstacles : un qui gère la rotation, l'autre qui gère le déplacement horizontal
@@ -249,22 +343,22 @@ namespace Color_Switch
                 nouvelObstacle.Draw(spriteBatch);
             else
                 nouvelObstacle.DrawRotate(spriteBatch);
-            if(randomPrecedent==0)
-               obstacleActuel.Draw(spriteBatch);
+            if (randomPrecedent == 0)
+                obstacleActuel.Draw(spriteBatch);
             else
-               obstacleActuel.DrawRotate(spriteBatch);
+                obstacleActuel.DrawRotate(spriteBatch);
 
             //lorsque la balle touche l'item, ce dernier disparait de l'écran
 
-            if(!ball.HasCollidedItem)
+            if (!ball.HasCollidedItem)
                 item.Draw(spriteBatch);
 
             //pareil lorsque la balle touche l'objet score
 
             if (!score.HasCollidedScore)
                 score.Draw(spriteBatch);
-            spriteBatch.End();
-            base.Draw(gameTime);
+            //èspriteBatch.End();
+          
         }
     }
 }

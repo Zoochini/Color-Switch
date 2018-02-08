@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/star.png</SourceFile>
-  <SourceTime>2018-01-24T23:42:51.9051442+01:00</SourceTime>
-  <DestFile>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/bin/Windows/star.xnb</DestFile>
-  <DestTime>2018-01-25T18:35:32.3396888+01:00</DestTime>
+  <SourceFile>H:/Users/zabsonre/source/repos/Color-Switch/Content/star.png</SourceFile>
+  <SourceTime>2018-01-27T16:36:24.7856965+01:00</SourceTime>
+  <DestFile>H:/Users/zabsonre/source/repos/Color-Switch/Content/bin/Windows/star.xnb</DestFile>
+  <DestTime>2018-01-27T16:56:29.5389478+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

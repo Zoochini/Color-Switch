@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>H:/Users/zabsonre/source/repos/Color-Switch/Content/ball.png</SourceFile>
-  <SourceTime>2018-01-23T18:04:27.5268005+01:00</SourceTime>
-  <DestFile>H:/Users/zabsonre/source/repos/Color-Switch/Content/bin/Windows/ball.xnb</DestFile>
-  <DestTime>2018-01-27T16:56:27.5178346+01:00</DestTime>
+  <SourceFile>H:/Users/zabsonre/source/repos/Color-Switch/Content/play.png</SourceFile>
+  <SourceTime>2018-01-30T13:17:16.392245+01:00</SourceTime>
+  <DestFile>H:/Users/zabsonre/source/repos/Color-Switch/Content/bin/Windows/play.xnb</DestFile>
+  <DestTime>2018-02-08T14:45:05.2154399+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
