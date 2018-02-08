@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Color_Switch.Core;
+using System;
+using System.Collections.Generic;
 
 namespace Color_Switch
 {
@@ -14,9 +16,18 @@ namespace Color_Switch
         SpriteBatch spriteBatch;
         Ball ball;
         Item item;
-        Obstacle obstacle;
         Score score;
         Camera camera;
+        Color color;
+        Obstacle obstacleActuel;
+        Obstacle nouvelObstacle;
+        Obstacle temp;
+        SpriteFont font;
+
+        int random=0;
+        int randomPrecedent = 0;
+        float hauteurMax;
+
         public static int screenWidth;
         public static int screenHeight;
 
@@ -28,6 +39,8 @@ namespace Color_Switch
             graphics.PreferredBackBufferHeight = 768;
             screenWidth = graphics.PreferredBackBufferWidth;
             screenHeight = graphics.PreferredBackBufferHeight;
+            hauteurMax = screenHeight/2;
+            color = new Color(10,10,10);
 
 
         }
@@ -43,7 +56,10 @@ namespace Color_Switch
             // TODO: Add your initialization logic here
             ball = new Ball(26, 26);
             item = new Item(30, 30);
-            obstacle = new Obstacle(300, 300);
+            nouvelObstacle = new Obstacle(2048, 11);
+            obstacleActuel = new Obstacle(0,0); //ne sert à rien en l'état actuel, il est juste créé pour pouvoir être dans la méthode Draw. Il servira lorsqu'un nouvel obstacle sera créé
+            score = new Score(33, 32);
+            camera = new Camera();
             base.Initialize();
         }
 
@@ -57,16 +73,27 @@ namespace Color_Switch
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            ball.textureObject = Content.Load<Texture2D>("ball");
-            ball.positionObject = new Vector2(512, 700);
+            ball.TextureObject = Content.Load<Texture2D>("ball");
+            ball.PositionObject = new Vector2((screenWidth - ball.Width) / 2, (((screenHeight - ball.Height) / 2))+(screenHeight/4));
             ball.InitialisationRectangleDestination();
-            item.textureObject = Content.Load<Texture2D>("multicolor");
-            item.positionObject = new Vector2(512, 300);
+
+            item.TextureObject = Content.Load<Texture2D>("multicolor");
+            item.PositionObject = new Vector2((screenWidth - ball.Width) / 2, ((screenHeight - item.Height) / 2)-(screenHeight/3));
             item.InitialisationRectangleDestination();
-            obstacle.textureObject = Content.Load<Texture2D>("obstacle");
-            obstacle.positionObject = new Vector2(520, item.positionObject.Y-200);
-            obstacle.InitialisationRectangleDestination();
-            camera = new Camera();
+
+            nouvelObstacle.TextureObject = Content.Load<Texture2D>("obstacleLine");
+            nouvelObstacle.PositionObject = new Vector2(-1024, item.PositionObject.Y-(screenHeight/4));
+            nouvelObstacle.InitialisationRectangleDestination();
+
+            obstacleActuel.TextureObject = Content.Load<Texture2D>("obstacleLine");
+            obstacleActuel.PositionObject = new Vector2(0, 0);
+            obstacleActuel.InitialisationRectangleDestination();
+
+            score.TextureObject = Content.Load<Texture2D>("star");
+            score.PositionObject = new Vector2((screenWidth - ball.Width) / 2, nouvelObstacle.PositionObject.Y - 100); 
+            score.InitialisationRectangleDestination();
+
+            font = Content.Load<SpriteFont>("Score");
         }
 
         /// <summary>
@@ -89,11 +116,101 @@ namespace Color_Switch
                 Exit();
 
             // TODO: Add your update logic here
-            ball.UpdateColor(gameTime, item);
-            ball.Jump(gameTime);
-            obstacle.Rotate();
-            camera.Follow(ball);
+            ball.UpdateColor(item);
+            score.CollisionBall(ball);
+            ball.Jump();
+
+            //Lorsque l'obstacle atteint le bas de l'écran, on charge un nouvel obstacle tout en conservant l'actuel
+
+            if (nouvelObstacle.PositionObject.Y >= ball.PositionObject.Y + 200)
+            {
+                temp = nouvelObstacle; 
+                nouvelObstacle = UpdateObstacles(); //pour générer le nouvel obstacle. La méthode se situe juste après la méthode Update
+                obstacleActuel = temp;
+            }
+            
+            //pour gérer le déplacement du nouvel obstacle
+
+            if (random == 1 || random == 2) 
+                nouvelObstacle.Rotate();
+            else
+                nouvelObstacle.Move(gameTime);
+
+            //pour gérer le déplacement de l'ancien obstacle
+
+            if (randomPrecedent == 1 || randomPrecedent == 2)
+               obstacleActuel.Rotate();
+            else
+               obstacleActuel.Move(gameTime);
+                
+
+            //tant que la balle n'a pas atteint la hauteur maximale qu'elle a atteint, la camera ne la suivra pas
+
+            if (ball.PositionObject.Y <= hauteurMax)
+            {
+                camera.Follow(ball);
+                hauteurMax = ball.PositionObject.Y;
+            }
+
             base.Update(gameTime);
+        }
+
+        //pour gérer la création d'un nouvel obstacle
+
+        public Obstacle UpdateObstacles()
+        {
+            Random rnd = new Random();
+            Obstacle obstacle;
+
+            //l'index prend la valeur de l'ancien obstacle puis on met à jour indexNouvelObstacle pour la création du nouvel obstacle
+
+            randomPrecedent = random; 
+            random = rnd.Next(0, 3);
+
+            //création de l'obstacle en forme de ligne
+
+            if(random==0)
+            {
+                obstacle = new Obstacle(2048, 11);
+                obstacle.TextureObject = Content.Load<Texture2D>("obstacleLine");
+                obstacle.PositionObject = new Vector2(-1024, ball.PositionObject.Y - 500);
+                item.PositionObject = new Vector2((screenWidth - ball.Width) / 2, obstacle.PositionObject.Y + 100);
+                score.PositionObject = new Vector2((screenWidth - ball.Width) / 2, obstacle.PositionObject.Y - 100);
+            }
+            else
+            {
+                //création de l'obstacle en forme de carré
+
+                if (random == 1)
+                {
+                    obstacle = new Obstacle(300, 299);
+                    obstacle.TextureObject = Content.Load<Texture2D>("obstacleSquare");
+                    obstacle.PositionObject = new Vector2(screenWidth / 2, ball.PositionObject.Y - 600);
+                    item.PositionObject = new Vector2((screenWidth - ball.Width) / 2, obstacle.PositionObject.Y + 200);
+                    score.PositionObject = new Vector2(obstacle.PositionObject.X - (ball.Width) / 2, obstacle.PositionObject.Y - (ball.Height) / 2);
+                }
+                else
+                {
+                    //création de l'obstacle en forme de cercle
+
+                    obstacle = new Obstacle(300, 300); 
+                    obstacle.TextureObject = Content.Load<Texture2D>("obstacleCircle");
+                    obstacle.PositionObject = new Vector2(screenWidth / 2, ball.PositionObject.Y - 600);
+                    score.PositionObject = new Vector2(obstacle.PositionObject.X - (ball.Width) / 2, obstacle.PositionObject.Y - (ball.Height) / 2);
+                    item.PositionObject = new Vector2((screenWidth - ball.Width) / 2, obstacle.PositionObject.Y + 200);
+                }
+                    
+            }
+
+            obstacle.InitialisationRectangleDestination();
+            item.InitialisationRectangleDestination();            
+            score.InitialisationRectangleDestination();
+
+            //pour que les objets ball et score réaparaissent
+
+            ball.HasCollidedItem = false;
+            score.HasCollidedScore = false;
+            return obstacle;
         }
 
         /// <summary>
@@ -102,17 +219,50 @@ namespace Color_Switch
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.TransparentBlack);
+            GraphicsDevice.Clear(color);
 
             // TODO: Add your drawing code here
-            if (ball.positionObject.Y <= ColorSwitch.screenHeight / 2)
-                spriteBatch.Begin(transformMatrix: camera.Translation);
-            else
+
+            //Gère le cas où la balle n'a pas encore atteint le centre de l'écran
+
+            if (ball.PositionObject.Y > screenHeight/2 && !camera.SupHalfScreenHeight)
+            {
+
                 spriteBatch.Begin();
+                spriteBatch.DrawString(font, "" + score.ScoreCompteur, new Vector2(0, 0), Color.White);
+            }
+
+            else
+            {
+                spriteBatch.Begin(transformMatrix: camera.Translation);
+
+                //Pour gérer la position du score (car elle est dynamique) en fonction de la position de la balle
+
+                spriteBatch.DrawString(font, "" + score.ScoreCompteur, new Vector2(0, ball.PositionObject.Y - ((screenHeight - ball.Height) / 2) - (ball.PositionObject.Y - hauteurMax)), Color.White);
+            }
+            
             ball.DrawAnimation(spriteBatch);
-            obstacle.Draw(spriteBatch);
-            if(!ball.HasCollided)
+
+            //Deux affichages différents pour les obstacles : un qui gère la rotation, l'autre qui gère le déplacement horizontal
+
+            if (random == 0)
+                nouvelObstacle.Draw(spriteBatch);
+            else
+                nouvelObstacle.DrawRotate(spriteBatch);
+            if(randomPrecedent==0)
+               obstacleActuel.Draw(spriteBatch);
+            else
+               obstacleActuel.DrawRotate(spriteBatch);
+
+            //lorsque la balle touche l'item, ce dernier disparait de l'écran
+
+            if(!ball.HasCollidedItem)
                 item.Draw(spriteBatch);
+
+            //pareil lorsque la balle touche l'objet score
+
+            if (!score.HasCollidedScore)
+                score.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
