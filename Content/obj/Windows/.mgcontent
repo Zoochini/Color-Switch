@@ -4,10 +4,15 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/ball.png</File>
-    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/multicolor.png</File>
-    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/obstacle.png</File>
-    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/Score.spritefont</File>
-    <File>C:/Users/Kyon/Documents/GitHub/Color-Switch/Content/star.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/ball.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/multicolor.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/Score.spritefont</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/star.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/obstacleCircle.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/obstacleLine.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/obstacleSquare.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/bgColor.jpg</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/play.png</File>
+    <File>H:/Users/zabsonre/source/repos/Color-Switch/Content/scores.png</File>
   </SourceFiles>
 </SourceFileCollection>
